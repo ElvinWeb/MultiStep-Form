@@ -1,4 +1,6 @@
+/* Google-font */
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&family=Poppins:wght@200;300;400;500;600;700;800&family=Ubuntu:wght@300;400;500;700&display=swap");
+/* reset-css */
 * {
   margin: 0;
   padding: 0;
@@ -122,7 +124,7 @@ body {
 }
 /* Step-1 */
 .step-1 {
-  display: none;
+  display: flex;
   width: 80%;
 }
 .step-1 form {
@@ -162,7 +164,7 @@ form input::placeholder {
 }
 /* Step-2 */
 .step-2 {
-  display: flex;
+  display: none;
   width: 90%;
 }
 .step-2 form {
@@ -274,14 +276,187 @@ input:checked + .slider:before {
   display: none;
   width: 80%;
 }
-
+.step-3 form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.box {
+  border: 1px solid var(--Cool-gray);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-left: 12px;
+}
+.price {
+  margin-left: auto;
+}
+.ad-selected {
+  border: 1px solid var(--Purplish-blue);
+  background-color: var(--Magnolia);
+}
+.step-3 form input {
+  accent-color: var(--Purplish-blue);
+  transform: scale(1.3);
+  user-select: none;
+}
+.description small {
+  color: var(--Cool-gray);
+  font-weight: 700;
+}
+.description label {
+  color: var(--Marine-blue);
+  font-weight: 700;
+  user-select: none;
+}
+.price {
+  color: var(--Purplish-blue);
+}
 /* Step-4 */
 .step-4 {
   display: none;
   width: 80%;
 }
-/* Step-4 */
+.selection-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}
+.selection-container {
+  background-color: var(--Magnolia);
+  padding: 1.5rem;
+}
+.selected {
+  border: 2px solid var(--Purplish-blue);
+  background-color: var(--Magnolia);
+}
+.selected-plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--Marine-blue);
+  font-weight: 700;
+}
+.selected-addon {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: var(--Cool-gray);
+  font-weight: 500;
+  font-size: 1rem;
+}
+.selected-addon .service-price {
+  color: var(--Marine-blue);
+}
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  color: var(--Cool-gray);
+}
+.total b {
+  font-size: 1.2rem;
+  color: var(--Purplish-blue);
+}
+/* Step-5 */
 .step-5 {
-  display: none;
   width: 80%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+}
+.step-5 .title {
+  margin-bottom: 10px;
+}
+.step-5 button {
+  display: none;
+}
+/* Responsive-design */
+@media only screen and (max-width: 920px) {
+  .form {
+    margin: 20px 35px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  body {
+    position: relative;
+  }
+  .form-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    background-size: cover;
+    flex-direction: row;
+    width: 100%;
+    height: 300px;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: -1;
+  }
+  .step-content {
+    display: none;
+  }
+  .form {
+    position: absolute;
+    top: 15%;
+    max-width: 375px;
+    background-color: var(--White);
+  }
+  .form-container {
+    padding: 2rem;
+  }
+  .btns {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--White);
+    right: 0;
+    left: 0;
+    height: 80px;
+    padding-inline: 1rem;
+  }
+  .step-1 .btns button {
+    margin: auto 0 auto auto;
+  }
+  .step-2 form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .plan-card {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+  .stp {
+    gap: 1rem;
+    width: 100%;
+  }
+  .stp .header {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    line-height: 1.5rem;
+  }
+  .switcher {
+    margin: 2rem 0;
+  }
 }
