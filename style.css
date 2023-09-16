@@ -14,6 +14,7 @@
   --Pastel-blue: hsl(228, 100%, 84%);
   --Light-blue: hsl(206, 94%, 87%);
   --Strawberry-red: hsl(354, 84%, 57%);
+  --green-color: #a8df8e;
   --Cool-gray: hsl(231, 11%, 63%);
   --Light-gray: hsl(229, 24%, 87%);
   --Magnolia: hsl(217, 100%, 97%);
@@ -71,7 +72,10 @@ body {
   color: var(--Marine-blue) !important;
 }
 .err {
-  border: 1px solid var(--Strawberry-red);
+  border: 1px solid var(--Strawberry-red) !important;
+}
+.valid {
+  border: 1px solid var(--green-color) !important;
 }
 .step {
   display: flex;
