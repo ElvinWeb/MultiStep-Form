@@ -75,15 +75,18 @@ plans.forEach((plan) => {
   plan.addEventListener("click", () => {
     document.querySelector(".selected").classList.remove("selected");
     plan.classList.add("selected");
-    const planName = plan.querySelector("b");
-    const planPrice = plan.querySelector(".plan-priced");
+    const planName = plan.querySelector("b").textContent;
+    const planPrice = plan.querySelector(".plan-priced").textContent;
     obj.plan = planName;
     obj.price = planPrice;
   });
 });
 
+
+
 switcher.addEventListener("click", () => {
-  const val = switcher.querySelector(".switch-btn").checked;
+  const val = document.querySelector(".switch-btn").checked;
+  console.log(val);
   if (val) {
     document.querySelector(".monthly").classList.remove("sw-active");
     document.querySelector(".yearly").classList.add("sw-active");
@@ -96,17 +99,17 @@ switcher.addEventListener("click", () => {
 });
 
 addons.forEach((addon) => {
-  addon.addEventListener("click", () => {
+  addon.addEventListener("click", (e) => {
     const addonSelect = addon.querySelector("input");
     const ID = addon.getAttribute("data-id");
-    console.log(ID);
+    console.log(addonSelect.checked);
     if (addonSelect.checked) {
       addonSelect.checked = false;
       addon.classList.remove("ad-selected");
       showAddon(ID, false);
     } else {
       addonSelect.checked = true;
-      addonSelect.classList.add("ad-selected");
+      addon.classList.add("ad-selected");
       showAddon(addon, true);
       e.preventDefault();
     }
@@ -131,16 +134,16 @@ function switchPrice(checked) {
 }
 
 function showAddon(ad, val) {
-  const temp = document.querySelector("template")[0];
+  const temp = document.getElementsByTagName("template")[0];
   const clone = temp.content.cloneNode(true);
   const serviceName = clone.querySelector(".service-name");
   const servicePrice = clone.querySelector(".service-price");
-  const serviceID = clone.querySelector(".service-id");
+  const serviceID = clone.querySelector(".selected-addon");
   if (ad && val) {
-    serviceName.textContent = ad.querySelector("label").innerText;
-    servicePrice.textContent = ad.querySelector(".price").innerText;
+    serviceName.textContent = ad.querySelector("label").textContent;
+    servicePrice.textContent = ad.querySelector(".price").textContent;
     serviceID.setAttribute("data-id", ad.dataset.id);
-    document.querySelectorAll(".addons").apppendChild(clone);
+    document.querySelector(".addons").appendChild(clone);
   } else {
     const addons = document.querySelectorAll(".selected-addon");
     addons.forEach((addon) => {
