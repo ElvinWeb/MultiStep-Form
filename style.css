@@ -23,9 +23,7 @@
   --box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.13),
     0 1px 4px 0 rgba(0, 0, 0, 0.11);
 }
-.hidden {
-  display: none;
-}
+
 img {
   max-width: 100%;
 }
@@ -46,6 +44,7 @@ body {
   display: flex;
   padding: 1rem;
 }
+/* -----------form-sidebar--------- */
 .form-sidebar {
   background-image: url("./assets/images/bg-sidebar-desktop.svg");
   background-repeat: no-repeat;
@@ -56,6 +55,7 @@ body {
   flex-direction: column;
   gap: 2rem;
 }
+/* -----------circule--------- */
 .circule {
   height: 40px;
   width: 40px;
@@ -67,9 +67,13 @@ body {
   color: var(--White);
   font-weight: 600;
 }
+/* ----------classes------- */
 .active .circule {
   background-color: var(--Light-blue) !important;
   color: var(--Marine-blue) !important;
+}
+.hidden {
+  display: none;
 }
 .err {
   border: 1px solid var(--Strawberry-red) !important;
@@ -77,6 +81,7 @@ body {
 .valid {
   border: 1px solid var(--green-color) !important;
 }
+/* ---------step-content------- */
 .step {
   display: flex;
   align-items: center;
@@ -113,6 +118,8 @@ body {
 .header .exp {
   color: var(--Cool-gray);
 }
+/* ---------step-content end------- */
+/* ---------buttons-------- */
 .next-stp {
   margin-top: auto;
   margin-bottom: 2rem;
@@ -126,7 +133,19 @@ body {
   display: flex;
   align-self: flex-end;
 }
-/* Step-1 */
+.prev-stp {
+  margin-top: auto;
+  margin-bottom: 2rem;
+  border: none;
+  font-weight: 600;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 7px;
+  color: var(--Cool-gray);
+}
+/* ---------buttons end------ */
+/* -----------Step-1-------- */
 .step-1 {
   display: flex;
   width: 80%;
@@ -166,7 +185,8 @@ form input::placeholder {
   margin-bottom: -20px;
   font-weight: 400;
 }
-/* Step-2 */
+/* -----------Step-1----------- */
+/*----------- Step-2 ----------*/
 .step-2 {
   display: none;
   width: 90%;
@@ -212,17 +232,6 @@ form input::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.prev-stp {
-  margin-top: auto;
-  margin-bottom: 2rem;
-  border: none;
-  font-weight: 600;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 1rem 2rem;
-  border-radius: 7px;
-  color: var(--Cool-gray);
 }
 .switcher {
   background-color: var(--Magnolia);
@@ -275,7 +284,8 @@ input:checked + .slider:before {
 .slider.round::before {
   border-radius: 50%;
 }
-/* Step-3 */
+/*-------------- Step-2 end ----------*/
+/*-------------- Step-3------------ */
 .step-3 {
   display: none;
   width: 80%;
@@ -325,7 +335,8 @@ input:checked + .slider:before {
 .price {
   color: var(--Purplish-blue);
 }
-/* Step-4 */
+/*-------------- Step-3 end------------ */
+/*------------ Step-4 -----------*/
 .step-4 {
   display: none;
   width: 80%;
@@ -374,7 +385,8 @@ input:checked + .slider:before {
   font-size: 1.2rem;
   color: var(--Purplish-blue);
 }
-/* Step-5 */
+/*------------ Step-4 end -----------*/
+/*---------Step-5 ---------- */
 .step-5 {
   width: 80%;
   display: none;
@@ -389,7 +401,8 @@ input:checked + .slider:before {
 .step-5 button {
   display: none;
 }
-/* Responsive-design */
+/* ----------Step-5 end-------*/
+/* --------Responsive-design--------- */
 @media only screen and (max-width: 920px) {
   .form {
     margin: 20px 35px;
@@ -464,3 +477,4 @@ input:checked + .slider:before {
     margin: 2rem 0;
   }
 }
+/* -------Responsive-design end------- */

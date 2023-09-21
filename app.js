@@ -1,3 +1,4 @@
+//declaring the required variables
 const steps = document.querySelectorAll(".stp");
 const circleSteps = document.querySelectorAll(".step");
 const formInputs = document.querySelectorAll(".input-field");
@@ -14,9 +15,12 @@ const obj = {
   kind: null,
   price: null,
 };
+
+//take the each step div with forEach() method
 steps.forEach((step) => {
   const nextBtn = step.querySelector(".next-stp");
   const prevBtn = step.querySelector(".prev-stp");
+  //prevBtn click event and make display none or flex stepdiv with currentStep variable
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
       document.querySelector(`.step-${currentStep}`).style.display = "none";
@@ -26,6 +30,7 @@ steps.forEach((step) => {
       currentCircle--;
     });
   }
+  //nextBtn click event and make display none or flex stepdiv with currentStep variable
   nextBtn.addEventListener("click", () => {
     document.querySelector(`.step-${currentStep}`).style.display = "none";
     if (currentStep < 5 && validateFrom()) {
@@ -40,6 +45,7 @@ steps.forEach((step) => {
   });
 });
 
+//summery function
 function summery(obj) {
   const planName = document.querySelector(".plan-name");
   const planPrice = document.querySelector(".plan-price");
@@ -47,6 +53,7 @@ function summery(obj) {
   planName.textContent = `${obj.plan} (${obj.kind ? "Monthly" : "Yearly"})`;
 }
 
+//making the validationForm functionality
 function validateFrom() {
   let valid = true;
   for (let index = 0; index < formInputs.length; index++) {
@@ -63,6 +70,7 @@ function validateFrom() {
   }
   return valid;
 }
+// finding the appropriate label according to the input id
 function findLabel(el) {
   const idVal = el.id;
   const labels = document.getElementsByTagName("label");
@@ -71,6 +79,7 @@ function findLabel(el) {
   }
 }
 
+//taking the each plan element with forEach method and add click event
 plans.forEach((plan) => {
   plan.addEventListener("click", () => {
     document.querySelector(".selected").classList.remove("selected");
@@ -82,20 +91,18 @@ plans.forEach((plan) => {
   });
 });
 
-
-
+//adding the click event then add and remove "sw-active" class in the switch input
 switcher.addEventListener("click", () => {
-  const val = document.querySelector(".switch-btn").checked;
-  console.log(val);
-  if (val) {
+  const switchVal = switcher.querySelector(".switch-btn").checked;
+  if (switchVal) {
     document.querySelector(".monthly").classList.remove("sw-active");
     document.querySelector(".yearly").classList.add("sw-active");
   } else {
     document.querySelector(".monthly").classList.add("sw-active");
     document.querySelector(".yearly").classList.remove("sw-active");
   }
-  switchPrice(val);
-  obj.kind = val;
+  switchPrice(switchVal);
+  obj.kind = switchVal;
 });
 
 addons.forEach((addon) => {
@@ -116,6 +123,7 @@ addons.forEach((addon) => {
   });
 });
 
+//changing the plan card prices according to checked boolean value
 function switchPrice(checked) {
   const yearlyPrice = [90, 120, 50];
   const monthlyPrice = [9, 12, 5];
@@ -124,15 +132,16 @@ function switchPrice(checked) {
     prices[0].textContent = `$${yearlyPrice[0]}/yr`;
     prices[1].textContent = `$${yearlyPrice[1]}/yr`;
     prices[2].textContent = `$${yearlyPrice[2]}/yr`;
-    setTimeout(true);
+    setValid(true);
   } else {
-    prices[0].textContent = `$${monthlyPrice[0]}/yr`;
-    prices[1].textContent = `$${monthlyPrice[1]}/yr`;
-    prices[2].textContent = `$${monthlyPrice[2]}/yr`;
-    setTimeout(false);
+    prices[0].textContent = `$${monthlyPrice[0]}/mo`;
+    prices[1].textContent = `$${monthlyPrice[1]}/mo`;
+    prices[2].textContent = `$${monthlyPrice[2]}/mo`;
+    setValid(false);
   }
 }
 
+//showing the clicked plan card
 function showAddon(ad, val) {
   const temp = document.getElementsByTagName("template")[0];
   const clone = temp.content.cloneNode(true);
@@ -155,6 +164,7 @@ function showAddon(ad, val) {
   }
 }
 
+//total price calculation
 function setTotal() {
   const str = planPrice.textContent;
   const res = str.replace(/\D/g, "");
@@ -163,13 +173,13 @@ function setTotal() {
   );
   let val = 0;
   for (let index = 0; index < addonPrices.length; index++) {
-    const str = addonPrices[index].innerHTML;
+    const str = addonPrices[index].textContent;
     const res = str.replace(/\D/g, "");
     val += Number(res);
   }
   total.innerHTML = `$${val + Number(res)}/${time ? "yr" : "mo"}`;
 }
 
-function setTime(t) {
+function setValid(t) {
   return (time = t);
 }
